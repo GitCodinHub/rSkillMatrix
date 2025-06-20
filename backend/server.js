@@ -15,7 +15,7 @@ console.log('🧠 Connected to DB:', mongoose.connection.name)
 
 
 const app = express()
-const cors = require("cors");
+
 
 app.use(cors())
 const PORT = 8000
