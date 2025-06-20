@@ -17,7 +17,7 @@ const [requiredSkills, setRequiredSkills] = useState("")
 
 
 useEffect(() => {
-  fetch('http://localhost:8000/api/employees')
+  fetch('https://rskillmatrix-production.up.railway.app/api/employees')
   .then(res => res.json())
   .then(data => {
     console.log("Fetched employees:", data);
