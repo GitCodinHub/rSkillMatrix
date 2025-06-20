@@ -18,14 +18,16 @@ const [requiredSkills, setRequiredSkills] = useState("")
 
 useEffect(() => {
   fetch('https://rskillmatrix-production.up.railway.app/api/employees')
-  .then(res => res.json())
-  .then(data => {
-    console.log("Fetched employees:", data);
-    setEmployees(data);
-  })
-  
-  .catch(err => console.error("error reaching the api", err))
-} , [])
+    .then(res => {
+      if (!res.ok) throw new Error("Failed to fetch");
+      return res.json();
+    })
+    .then(data => {
+      console.log("Fetched employees:", data);
+      setEmployees(data);
+    })
+    .catch(err => console.error("error reaching the api", err));
+}, [])
 
 const allSkills = [...new Set(employees.flatMap(emp => emp.skills))]
 

@@ -15,8 +15,18 @@ console.log('🧠 Connected to DB:', mongoose.connection.name)
 
 
 const app = express()
+const allowedOrigins = [
+  'https://r-skill-matrix.vercel.app'
+];
+
 app.use(cors({
-  origin: 'https://r-skill-matrix.vercel.app/' // ✅ your deployed frontend URL
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }))
 const PORT = 8000
 app.get('/api/employees', async (req, res) => {
