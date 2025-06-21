@@ -13,11 +13,11 @@ export default  function App(){
   const [project, setProject] = useState("");
 const [showSkillPrompt, setShowSkillPrompt] = useState(false);
 const [requiredSkills, setRequiredSkills] = useState("")
-
+const API_URL = import.meta.env.VITE_API_URL
 
 
 useEffect(() => {
-  fetch('https://rskillmatrix-production.up.railway.app/api/employees')
+  fetch('https://enthusiastic-cooperation-production.up.railway.app/api/employees')
     .then(res => {
       if (!res.ok) throw new Error("Failed to fetch");
       return res.json();
