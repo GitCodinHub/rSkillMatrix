@@ -17,9 +17,7 @@ console.log('🧠 Connected to DB:', mongoose.connection.name)
 const app = express()
 
 
-app.use(cors({
-  origin: 'https://r-skill-matrix.vercel.app/'  // ✅ Your actual deployed frontend URL
-}))
+app.use(cors())
 const PORT = 8000
 app.get('/api/employees', async (req, res) => {
   try {
